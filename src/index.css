@@ -1,0 +1,267 @@
+:root {
+  --color-primary: #4f46e5; 
+  --color-primary-dark: #4338ca;
+  --color-text: #1f2937; 
+  --color-text-light: #6b7280; 
+  --color-bg: #f3f4f6; 
+  --color-bg-alt: #ffffff; 
+  --color-border: #d1d5db;
+  --color-error: #dc2626; 
+  --font-family-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --border-radius: 0.5rem; 
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+#root-container {
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 2.25rem; 
+  font-weight: 700;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.app-header p {
+  font-size: 1.125rem; 
+  color: var(--color-text-light);
+  margin-top: 0.5rem;
+}
+
+.search-form {
+  background-color: var(--color-bg-alt);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 1rem;
+  z-index: 10;
+}
+
+.search-form-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .search-form-inner {
+    flex-direction: row;
+  }
+}
+
+.search-select-wrapper {
+  position: relative;
+}
+
+.search-select-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-light);
+  pointer-events: none;
+}
+
+.search-form input,
+.search-form select {
+  font-family: var(--font-family-main);
+  width: 100%;
+  padding: 0.85rem;
+  background-color: #f9fafb; 
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem; 
+  font-size: 1rem;
+  color: var(--color-text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-form input:focus,
+.search-form select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.3);
+}
+
+.search-form select {
+  padding-left: 2.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.search-input {
+  flex-grow: 1;
+}
+
+.search-form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-form button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.search-form button:disabled {
+  background-color: #9ca3af; 
+  cursor: not-allowed;
+}
+
+.status-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--color-text-light);
+}
+
+.status-message svg {
+  margin-bottom: 1rem;
+}
+
+.status-message p {
+  font-size: 1.125rem;
+}
+
+.status-message.error {
+  background-color: rgba(220, 38, 38, 0.05);
+  border-radius: var(--border-radius);
+  color: var(--color-error);
+}
+
+.error-text {
+  font-weight: 600;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .results-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+.book-card {
+  background-color: var(--color-bg-alt);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.book-card:hover h3 {
+  color: var(--color-primary);
+}
+
+.book-cover {
+  width: 100%;
+  height: 300px; 
+  object-fit: cover;
+  object-position: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.book-card-content {
+  padding: 1rem;
+}
+
+.book-card-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s;
+}
+
+.book-author {
+  font-size: 0.875rem; 
+  color: var(--color-text-light);
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book-publish-year {
+  font-size: 0.75rem; 
+  color: #9ca3af;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+.spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
